@@ -1,25 +1,5 @@
-/* object "current will be sent here for populating.
-     "CURRENT" KEYS:
-      city
-      region
-      temp
-      humidity
-      description (describes current conditions)
-      icon
-      high
-      low
-      feelsLike
-  
-  DOM Elements:
-    current container - HTML
-    temp - p
-    icon - img
-    description -p
-    ${city, region} -p
-    ${high}/${low} - p
-    feelsLike - p 
+const {createTextElement} = require('./createTextElement');
 
-*/
 function populateCurrent(data){
   let container = document.querySelector('.currentContainer');
   container.innerHTML = ''; /* wipe clean for each execution */
@@ -38,15 +18,18 @@ function populateCurrent(data){
 
   container.append(temp, icon, description, area, highLow);
 }
-
-
-function createTextElement(name, text){
-  let element = document.createElement('p');
-  element.className = name;
-  element.textContent = text;
-  return element;
-}
-
+/*
+  "CURRENT" KEYS:
+    city
+    region
+    temp
+    humidity
+    description (describes current conditions)
+    icon
+    high
+    low
+    feelsLike
+*/
 module.exports = {
   populateCurrent
 }

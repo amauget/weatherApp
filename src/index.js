@@ -1,8 +1,9 @@
 const {unitData} = require("./metricImperial");
-const {populatecurrent, populateCurrent} = require('./current');
+const {populateCurrent} = require('./current');
+const {populateForecast} = require('./forecast');
 function init(){
   let unit = 'metric'
-  let search = 'London';
+  let search = 'Honolulu';
 
   /* These are the default values on page load. */
 
@@ -44,25 +45,10 @@ async function sendOutData(unit, search){ /* removed from init() to allow "await
   populateCurrent(current)
 
   const forecast = data.forecast
+
+  populateForecast(forecast);
 }
-  /*     "CURRENT" KEYS:
-      city
-      region
-      temp
-      humidity
-      description (describes current conditions)
-      icon
-      high
-      low
-      feelsLike
- */    /*  "FORECAST" keys:
-        date
-        icon
-        description
-        high
-        low
-        humidity
-        */
+   
 
 init();
 console.trace();
