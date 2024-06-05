@@ -14,7 +14,7 @@ function populateCurrent(data){
 
   let area = createTextElement('area', `${data.city}, ${data.region}`);
 
-  let highLow = createTextElement('currentHighLow', data.high + '/' + data.low)
+  let highLow = createTextElement('currentHighLow', data.high + ' / ' + data.low)
 
   container.append(temp, icon, description, area, highLow);
 }

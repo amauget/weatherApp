@@ -8,4 +8,6 @@ COMPILE WEATHER KEY TYPES FOR ANIMATION:
   cloudy
   sunny
   partly cloudy
-  
+
+clouds background: 
+  https://www.pexels.com/photo/white-clouds-531767/  

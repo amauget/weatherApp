@@ -1,11 +1,15 @@
 async function unitData(unit, search){
+  let loader = document.querySelector('.loader')
+  loader.style.display= 'block'
 
   const data = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=6b2610dac8e14e62a52205458243105&q=${search}&days=10&aqi=yes&alerts=no`)
-  const parsed = await data.json();
+  const parsed = await data.json()
 
-  const location = parsed.location;
-  const current = parsed.current;
-  const forecast = parsed.forecast;
+  console.log(parsed)
+
+  const location = parsed.location
+  const current = parsed.current
+  const forecast = parsed.forecast
 
   let usedData = {};
 
@@ -27,9 +31,16 @@ async function unitData(unit, search){
     feelsLike = current.feelslike_f + '°F'
   }
  
+  let surroundingArea = undefined
+  if(location.country === "United States of America"){
+    surroundingArea = location.region
+  }
+  else{
+    surroundingArea = location.country
+  }
   usedData = {
     current: {
-      city: location.name, region: location.region, temp: currentTemp, humidity: current.humidity, description: current.condition.text, icon: current.condition.icon, 
+      city: location.name, region: surroundingArea, temp: currentTemp, humidity: current.humidity, description: current.condition.text, icon: current.condition.icon, 
       high: currentHigh, low: currentLow, feelsLike: feelsLike
     },
     forecast: { /* Populated by for loop below */
@@ -43,13 +54,13 @@ async function unitData(unit, search){
     let key = forecast.forecastday[i]
 
     let dateIndex = new Date(forecast.forecastday[i].date).getDay()
-    let date = null;
+    let date = null
     if(i === 0){
       date = 'Today'
     
     }
     else{ 
-      date = daysOfWeek[dateIndex];
+      date = daysOfWeek[dateIndex]
     }
   
     let icon = key.day.condition.icon
@@ -70,10 +81,10 @@ async function unitData(unit, search){
     let humidity = key.avghumidity
 
     usedData.forecast[i] = {
-      date: date, icon: icon, description: description, high: high, low: low, humidity: humidity 
+      date: date, icon: icon, description: description, 
+      high: high, low: low, humidity: humidity 
     }
   }
-
   return usedData
 }
 
