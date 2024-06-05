@@ -5,8 +5,6 @@ export  async function unitData(unit, search){
   const data = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=6b2610dac8e14e62a52205458243105&q=${search}&days=10&aqi=yes&alerts=no`)
   const parsed = await data.json()
 
-  console.log(parsed)
-
   const location = parsed.location
   const current = parsed.current
   const forecast = parsed.forecast
