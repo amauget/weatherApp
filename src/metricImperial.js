@@ -1,4 +1,4 @@
-async function unitData(unit, search){
+export  async function unitData(unit, search){
   let loader = document.querySelector('.loader')
   loader.style.display= 'block'
 
@@ -87,7 +87,6 @@ async function unitData(unit, search){
   }
   return usedData
 }
-
-module.exports = {
-  unitData,
-}
+// module.exports = {
+//   unitData
+// }

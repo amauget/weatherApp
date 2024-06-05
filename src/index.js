@@ -1,6 +1,7 @@
-const {unitData} = require("./metricImperial")
-const {populateCurrent} = require('./current')
-const {populateForecast} = require('./forecast')
+// const {unitData} = require("./metricImperial")
+import {unitData} from './metricImperial'
+import {populateCurrent} from './current'
+import {populateForecast} from './forecast'
 import './style.css'
 
 function init(){
@@ -9,7 +10,7 @@ function init(){
 
   /* These are the default values on page load. */
 
-  let data = sendOutData(unit, search) /* will return single object with all needed information */
+  sendOutData(unit, search) /* will return single object with all needed information */
   
   const submit = document.querySelector('.submit')
 
@@ -25,7 +26,7 @@ function init(){
   
   const submitAction = () =>{
     search = document.querySelector('.search').value
-    data = sendOutData(unit, search)
+    sendOutData(unit, search)
     searchInput.value = ''
   }
   const imperial = document.querySelector('.imperial')
@@ -33,16 +34,20 @@ function init(){
 
   imperial.addEventListener('click', () =>{
     unit = 'imperial'
+    
     imperial.style.background = 'white'
     metric.style.background = 'none'
-    data = sendOutData(unit, search)
+    
+    sendOutData(unit, search)
   })
   
   metric.addEventListener('click', () =>{
     unit = 'metric'
+    
     imperial.style.background = 'none'
     metric.style.background = 'white'
-    data = sendOutData(unit, search)
+    
+    sendOutData(unit, search)
   })
 }
 
@@ -62,4 +67,3 @@ async function sendOutData(unit, search){ /* removed from init() to allow "await
 }
 
 init()
-console.trace()

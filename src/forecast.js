@@ -1,6 +1,6 @@
-const{createTextElement} = require('./createTextElement')
+import { createTextElement } from "./createTextElement"
 
-function populateForecast(data){
+export function populateForecast(data){
   let container = document.querySelector('.forecastContainer')
   container.innerHTML = ''
 
@@ -34,6 +34,3 @@ function populateForecast(data){
     low
     humidity    
 */
-module.exports = {
-  populateForecast
-}

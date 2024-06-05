@@ -1,22 +1,22 @@
-const {createTextElement} = require('./createTextElement');
+import {createTextElement} from './createTextElement'
 
-function populateCurrent(data){
-  let container = document.querySelector('.currentContainer');
-  container.innerHTML = ''; /* wipe clean for each execution */
+export function populateCurrent(data){
+  let container = document.querySelector('.currentContainer')
+  container.innerHTML = '' /* wipe clean for each execution */
 
-  let temp = createTextElement('currentTemp', data.temp);
+  let temp = createTextElement('currentTemp', data.temp)
 
-  let icon = document.createElement('img');
-  icon.className = 'currentIcon';
-  icon.src = data.icon;
+  let icon = document.createElement('img')
+  icon.className = 'currentIcon'
+  icon.src = data.icon
 
-  let description = createTextElement('currentDescription', data.description);
+  let description = createTextElement('currentDescription', data.description)
 
-  let area = createTextElement('area', `${data.city}, ${data.region}`);
+  let area = createTextElement('area', `${data.city}, ${data.region}`)
 
   let highLow = createTextElement('currentHighLow', data.high + ' / ' + data.low)
 
-  container.append(temp, icon, description, area, highLow);
+  container.append(temp, icon, description, area, highLow)
 }
 /*
   "CURRENT" KEYS:
@@ -30,6 +30,3 @@ function populateCurrent(data){
     low
     feelsLike
 */
-module.exports = {
-  populateCurrent
-}
