@@ -2,7 +2,7 @@ export  async function unitData(unit, search){
   let loader = document.querySelector('.loader')
   loader.style.display= 'block'
 
-  const data = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=6b2610dac8e14e62a52205458243105&q=${search}&days=10&aqi=yes&alerts=no`)
+  const data = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=6b2610dac8e14e62a52205458243105&q=${search}&days=10&aqi=yes&alerts=no`)
   const parsed = await data.json()
 
   console.log(parsed)
